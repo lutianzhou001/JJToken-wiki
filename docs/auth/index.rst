@@ -10,4 +10,17 @@
    signup.md
    login.md
    forgetpassword.md
+   bindGoogleAuth.md
+   rebindGoogleAuth.md
+   bindMailorTel.md
+   faceIDFingerprint.md
+   googleAuth.md
+   TelAuth.md
+   MailAuth.md
+   KYCAuth.md
+   closeAuth.md
+   openAuth.md
+   changeLoginPassword.md
+   setorchangeAssetpassword.md
+
 

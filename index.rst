@@ -12,6 +12,7 @@ Welcome to hudex's documentation!
 
    docs/introduction.md
    docs/auth/index.rst
+   docs/trade/index.rst
 Indices and tables
 ==================
 
