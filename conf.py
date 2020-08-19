@@ -21,7 +21,7 @@ from recommonmark.transform import AutoStructify
 from recommonmark.parser import CommonMarkParser
 # -- Project information -----------------------------------------------------
 
-project = u'hudex'
+project = u'JJToken'
 copyright = u'2020, vincent'
 author = u'vincent'
 
@@ -152,7 +152,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'hudex', u'hudex Documentation',
+    (master_doc, 'JJToken', u'JJToken Documentation',
      [author], 1)
 ]
 
