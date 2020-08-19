@@ -1,0 +1,106 @@
+### 流程简介
+
+#### 发布流程
+
+指的是平台收到企业线下转账后，给企业发行通用代币JJToken的入金行为
+
+
+
+#### 购券流程
+
+指的是平台通过JJToken向平台购买消费券（Coupon）并分发到员工账户的行为
+
+
+
+#### 消费流程
+
+指的是员工通过小程序/app下单在商城购买商品的行为
+
+
+
+#### 提现流程
+
+指的是当商户积累了一定的消费券（Coupon）后，向平台托管账户换取JJToken的行为
+
+
+
+#### 清算流程
+
+指的是券到期后，企业，商户，平台手续费账户分别通过JJToken换取现金的出金行为。
+
+
+
+### 主要流程
+
+
+
+```eval_rst
+.. mermaid::
+
+
+    sequenceDiagram
+
+    participant staff as staff
+    participant platform as Platform
+    participant store as store
+    participant enterprise as enterprise
+
+
+    Note over platform,enterprise: 发行资产开始
+    enterprise->>platform: 线下转账n元
+    platform->>enterprise: 平台管理员发行n个token给企业
+    Note over platform,enterprise: 发行资产结束
+
+
+    Note over platform,enterprise: 企业购买Coupon开始
+    enterprise->>enterprise: 授权平台账户使用企业的token
+    enterprise->>platform: 平台将企业托管的token转账给自己
+    platform->>enterprise: 发送Coupon
+    Note over platform,enterprise: 购买Coupon结束
+
+
+    Note over staff,enterprise: 用户消费开始
+    staff->>store: 员工向商城购买产品（用企业福利购买）
+    store-->>platform: 请求支付（订单ID，购买者ID，商家ID，商品ID，购买时间，退换货标志）
+    alt 剩余Coupon > 0
+    staff->>store: 向商家转账Coupon
+    alt 支付成功
+    platform->>store: 回调消息:支付成功:可以发货
+    Note over platform: 存证记录上链
+    else 支付失败
+    platform->>store: 回调消息:支付失败,申请回滚
+    end
+
+    store->>staff: 发货，用户签收
+    else 拒绝支付
+    platform->>store: 拒绝: Coupon不足
+    end
+    Note over staff,enterprise: 用户消费结束
+
+
+    Note over platform,enterprise: 提现流程开始
+    store ->> platform: 申请提现
+    alt 提现金额 < Coupon数量
+    store ->> store : 销毁Coupon
+    platform ->> store: 转账一定比例（例如90%）到商家账户
+    platform ->> platform: 转账一定比例（例如10%）到手续费账户
+    else 提现失败
+    platform ->> store: 提现失败，Coupon不足
+    end
+    Note over platform,enterprise: 提现流程结束
+
+    platform->>platform: 向平台转账Token，结算手续费
+    store->>platform:向平台转账Token，结算营业额
+    enterprise->>platform:向平台转账Token，退还剩余资金
+    platform-->>platform: 平台线下结算手续费
+    platform-->>enterprise:平台退还资金
+    platform-->>store:平台结算营业额
+    Note over platform,enterprise: 清算流程结束
+
+
+
+
+```
+
+
+
