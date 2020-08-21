@@ -13,6 +13,7 @@ Welcome to JJToken's documentation!
    docs/introduction.md
    docs/flowcharts/index.rst
    docs/general/index.rst
+   docs/contracts/index.rst
 Indices and tables
 ==================
 
