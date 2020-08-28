@@ -14,6 +14,8 @@ Welcome to JJToken's documentation!
    docs/flowcharts/index.rst
    docs/general/index.rst
    docs/contracts/index.rst
+   docs/JJ-Bridge/index.rst
+
 Indices and tables
 ==================
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>系统设计 &mdash; JJToken 1.0 documentation</title>
+  <title>区块链中间件 &mdash; JJToken 1.0 documentation</title>
   
 
   
@@ -26,7 +26,6 @@
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/language_data.js"></script>
         <script src="../../_static/js/readthedocs-analytics.js"></script>
-        <script src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -38,8 +37,8 @@
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="系统设计" href="systemDesign.html" />
-    <link rel="prev" title="流程简介" href="../flowcharts/flowcharts.html" /> 
+    <link rel="next" title="合约API接口手册" href="apis.html" />
+    <link rel="prev" title="Roles.sol" href="../contracts/roles.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,12 +85,12 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">基本介绍和项目目的</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../flowcharts/index.html">流程图</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">系统设计</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="systemDesign.html">系统设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">系统设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contracts/index.html">合约项目</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">区块链中间件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="apis.html">合约API接口手册</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../contracts/index.html">合约项目</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../JJ-Bridge/index.html">区块链中间件</a></li>
 </ul>
 
             
@@ -137,13 +136,13 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>系统设计</li>
+      <li>区块链中间件</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/docs/general/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/docs/JJ-Bridge/index.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -157,11 +156,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1>系统设计<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>系统设计</p>
+<h1>区块链中间件<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>JJ-Bridge是一个链接区块链和服务的中台，JJ-Bridge就像是一座桥一样，一边集成了访问区块链的SDK（Typechain），一遍通过httpService的形式把服务暴露给客户使用，让客户就像使用传统服务一样使用区块链服务。</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="systemDesign.html">系统设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apis.html">合约API接口手册</a></li>
 </ul>
 </div>
 </div>
@@ -174,10 +173,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="systemDesign.html" class="btn btn-neutral float-right" title="系统设计" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="apis.html" class="btn btn-neutral float-right" title="合约API接口手册" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../flowcharts/flowcharts.html" class="btn btn-neutral float-left" title="流程简介" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../contracts/roles.html" class="btn btn-neutral float-left" title="Roles.sol" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

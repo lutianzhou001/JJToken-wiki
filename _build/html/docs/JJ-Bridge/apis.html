@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>系统设计 &mdash; JJToken 1.0 documentation</title>
+  <title>合约API接口手册 &mdash; JJToken 1.0 documentation</title>
   
 
   
@@ -26,7 +26,6 @@
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/language_data.js"></script>
         <script src="../../_static/js/readthedocs-analytics.js"></script>
-        <script src="https://unpkg.com/mermaid@7.1.0/dist/mermaid.min.js"></script>
     
     <script type="text/javascript" src="../../_static/js/theme.js"></script>
 
@@ -38,8 +37,7 @@
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="系统设计" href="systemDesign.html" />
-    <link rel="prev" title="流程简介" href="../flowcharts/flowcharts.html" /> 
+    <link rel="prev" title="区块链中间件" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,12 +84,20 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">基本介绍和项目目的</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../flowcharts/index.html">流程图</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">系统设计</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="systemDesign.html">系统设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">系统设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../contracts/index.html">合约项目</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">区块链中间件</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">合约API接口手册</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">手册地址</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#abcd">接口分类abcd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#auth">/auth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blockchain">/blockchain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#contract">/contract</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data">/data</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../contracts/index.html">合约项目</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../JJ-Bridge/index.html">区块链中间件</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -137,13 +143,15 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>系统设计</li>
+          <li><a href="index.html">区块链中间件</a> &raquo;</li>
+        
+      <li>合约API接口手册</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/docs/general/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/docs/JJ-Bridge/apis.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -156,13 +164,31 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
-<h1>系统设计<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>系统设计</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="systemDesign.html">系统设计</a></li>
-</ul>
+  <div class="section" id="api">
+<h1>合约API接口手册<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>手册地址<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>手册使用swagger标准实现，请参阅：http://127.0.0.1:3000/document/#/
+默认测试参数还未写好，接下来会完善此内容。</p>
+</div>
+<div class="section" id="abcd">
+<h2>接口分类abcd<a class="headerlink" href="#abcd" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="auth">
+<h2>/auth<a class="headerlink" href="#auth" title="Permalink to this headline">¶</a></h2>
+<p>auth(a)类型接口是用户注册，认证，获取jwt的主要方式，例如，注册，登陆等（接下来还会有忘记密码，重置密码的接口）</p>
+</div>
+<div class="section" id="blockchain">
+<h2>/blockchain<a class="headerlink" href="#blockchain" title="Permalink to this headline">¶</a></h2>
+<p>blockchain(b)类型接口主要查询链本身的信息，如： 链上交易，区块高度，某个区块，某个交易等</p>
+</div>
+<div class="section" id="contract">
+<h2>/contract<a class="headerlink" href="#contract" title="Permalink to this headline">¶</a></h2>
+<p>contract(c)该类型接口主要用于业务层，是用户和合约交互主要方式，实现了包括，增删改查用户角色，转账，发行Token，销毁，增发等功能</p>
+</div>
+<div class="section" id="data">
+<h2>/data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
+<p>data(d)该类型接口主要用于查询链上数据，解析（decode）成为可读数据，进行链下存储</p>
 </div>
 </div>
 
@@ -174,10 +200,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="systemDesign.html" class="btn btn-neutral float-right" title="系统设计" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="../flowcharts/flowcharts.html" class="btn btn-neutral float-left" title="流程简介" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="区块链中间件" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
