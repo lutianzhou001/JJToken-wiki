@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Roles.sol &mdash; JJToken 1.0 documentation</title>
+  <title>Coupons.sol &mdash; JJToken 1.0 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="JJToken.sol" href="JJToken.html" />
-    <link rel="prev" title="Config.sol" href="config.html" /> 
+    <link rel="next" title="区块链中间件" href="../JJ-Bridge/index.html" />
+    <link rel="prev" title="JJToken.sol" href="JJToken.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -90,28 +90,25 @@
 <li class="toctree-l2"><a class="reference internal" href="contracts.html">合约总览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contracts.html#id2">快速开始</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config.html">Config.sol</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Roles.sol</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="roles.html">Roles.sol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="JJToken.html">JJToken.sol</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Coupons.sol</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id1">合约作用</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">合约方法</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#store">增加一个Store</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">增加一个企业</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#address">查询一个商户的Address</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">查询一个企业的Address</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">查询商户数量</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">查询某一个商户</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">查询某个企业</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">更新某个商户</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">更新某个企业</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">删除某个商户</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">删除某个企业</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id12">设置平台费用地址</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id13">设置管理员地址</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">获取卡劵信息</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">获取某地址剩余的余额</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#jjtoken">获取某地址剩余JJToken的余额</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">设定分成比例（主要用于分成时候的清算结算）</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">提现</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">发行卡劵</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">批量发行卡劵</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">销毁卡劵</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">转账卡劵余额</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">退款</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="JJToken.html">JJToken.sol</a></li>
-<li class="toctree-l2"><a class="reference internal" href="coupons.html">Coupons.sol</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../JJ-Bridge/index.html">区块链中间件</a></li>
@@ -162,13 +159,13 @@
         
           <li><a href="index.html">合约项目</a> &raquo;</li>
         
-      <li>Roles.sol</li>
+      <li>Coupons.sol</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/docs/contracts/roles.md.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/docs/contracts/coupons.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -181,113 +178,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="roles-sol">
-<h1>Roles.sol<a class="headerlink" href="#roles-sol" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="coupons-sol">
+<h1>Coupons.sol<a class="headerlink" href="#coupons-sol" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
 <h2>合约作用<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<p>增删改查不同角色的地址，方便管理员管理</p>
+<p>Coupons主要指的是消费卡劵，是一种储值卡，不同的商户发行的Coupon不同。但是都可以完成基本的发行，增发，转账，销毁等功能。</p>
 </div>
 <div class="section" id="id2">
 <h2>合约方法<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="store">
-<h3>增加一个Store<a class="headerlink" href="#store" title="Permalink to this headline">¶</a></h3>
-<p>方法名： appendStore</p>
-<table border="1" class="docutils">
-<thead>
-<tr>
-<th>输入参数</th>
-<th>参数含义</th>
-<th>类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>_newStoreName</td>
-<td>商户名称</td>
-<td>string</td>
-</tr>
-<tr>
-<td>_newStoreId</td>
-<td>商户Id</td>
-<td>string</td>
-</tr>
-<tr>
-<td>_newStoreAddress</td>
-<td>商户区块链地址</td>
-<td>address</td>
-</tr>
-</tbody>
-</table></div>
 <div class="section" id="id3">
-<h3>增加一个企业<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<p>方法名： appendEnterprise</p>
-<table border="1" class="docutils">
-<thead>
-<tr>
-<th>输入参数</th>
-<th>参数含义</th>
-<th>类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>_newEnterpriseName</td>
-<td>企业名称</td>
-<td>string</td>
-</tr>
-<tr>
-<td>_newEnterpriseId</td>
-<td>企业Id</td>
-<td>string</td>
-</tr>
-<tr>
-<td>_newEnterpriseAddress</td>
-<td>企业区块链地址</td>
-<td>address</td>
-</tr>
-</tbody>
-</table></div>
-<div class="section" id="address">
-<h3>查询一个商户的Address<a class="headerlink" href="#address" title="Permalink to this headline">¶</a></h3>
-<p>方法名：getStoreById</p>
-<table border="1" class="docutils">
-<thead>
-<tr>
-<th>输入参数</th>
-<th>参数含义</th>
-<th>类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>_storeId</td>
-<td>商户Id</td>
-<td>string</td>
-</tr>
-</tbody>
-</table></div>
-<div class="section" id="id4">
-<h3>查询一个企业的Address<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>方法名：getEnterpriseById</p>
-<table border="1" class="docutils">
-<thead>
-<tr>
-<th>输入参数</th>
-<th>参数含义</th>
-<th>类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>_enterpriseId</td>
-<td>企业Id</td>
-<td>string</td>
-</tr>
-</tbody>
-</table></div>
-<div class="section" id="id5">
-<h3>查询商户数量<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>方法名： storesCount</p>
+<h3>获取卡劵信息<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>方法名： getInfo</p>
 <table border="1" class="docutils">
 <thead>
 <tr>
@@ -299,14 +200,71 @@
 <tbody>
 <tr>
 <td>无</td>
-<td>-</td>
-<td>-</td>
+<td>N/A</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id4">
+<h3>获取某地址剩余的余额<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>方法名： getBalance</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入参数</th>
+<th>参数含义</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userAddress</td>
+<td>需要获取卡劵的余额的地址</td>
+<td>address</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="jjtoken">
+<h3>获取某地址剩余JJToken的余额<a class="headerlink" href="#jjtoken" title="Permalink to this headline">¶</a></h3>
+<p>方法名：getJJTokenBalance</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入参数</th>
+<th>参数含义</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userAddress</td>
+<td>需要获取JJToken余额的地址</td>
+<td>address</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id5">
+<h3>设定分成比例（主要用于分成时候的清算结算）<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>方法名：setStorePercentage</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入参数</th>
+<th>参数含义</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>_storePercentage</td>
+<td>商户占据的分成比例</td>
+<td>uint256</td>
 </tr>
 </tbody>
 </table></div>
 <div class="section" id="id6">
-<h3>查询某一个商户<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<p>方法名： veryStore</p>
+<h3>提现<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>方法名： withdraw</p>
 <table border="1" class="docutils">
 <thead>
 <tr>
@@ -317,15 +275,15 @@
 </thead>
 <tbody>
 <tr>
-<td>index</td>
-<td>（商户在商户数组中的下标）</td>
-<td>uint</td>
+<td>amount</td>
+<td>提现数量-</td>
+<td>Uint256</td>
 </tr>
 </tbody>
 </table></div>
 <div class="section" id="id7">
-<h3>查询某个企业<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<p>方法名： veryEnterprise</p>
+<h3>发行卡劵<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>方法名：mint</p>
 <table border="1" class="docutils">
 <thead>
 <tr>
@@ -336,15 +294,20 @@
 </thead>
 <tbody>
 <tr>
-<td>index</td>
-<td>（企业在商户数组中的下标）</td>
-<td>uint</td>
+<td>staff</td>
+<td>员工地址-</td>
+<td>address</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>员工发行的数量</td>
+<td>uint256</td>
 </tr>
 </tbody>
 </table></div>
 <div class="section" id="id8">
-<h3>更新某个商户<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<p>方法名：updateStore</p>
+<h3>批量发行卡劵<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>方法名：batchMint</p>
 <table border="1" class="docutils">
 <thead>
 <tr>
@@ -355,25 +318,19 @@
 </thead>
 <tbody>
 <tr>
-<td>_newStoreName</td>
-<td>商户新名称</td>
-<td>string</td>
+<td>staff</td>
+<td>员工地址-</td>
+<td>address[]</td>
 </tr>
 <tr>
-<td>_StoreId</td>
-<td>商户Id</td>
-<td>string</td>
-</tr>
-<tr>
-<td>_newStoreAddress</td>
-<td>商户新区块链地址</td>
-<td>address</td>
+<td>amount</td>
+<td>每个员工发行的数量</td>
+<td>uint256</td>
 </tr>
 </tbody>
 </table></div>
 <div class="section" id="id9">
-<h3>更新某个企业<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<p>方法名：updateEnterprise</p>
+<h3>销毁卡劵<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <table border="1" class="docutils">
 <thead>
 <tr>
@@ -384,25 +341,20 @@
 </thead>
 <tbody>
 <tr>
-<td>_newEnterpriseName</td>
-<td>企业新名称</td>
-<td>string</td>
+<td>account</td>
+<td>销毁地址-</td>
+<td>address[]</td>
 </tr>
 <tr>
-<td>_enterpriseId</td>
-<td>企业Id</td>
-<td>string</td>
-</tr>
-<tr>
-<td>_newEnterpriseAddress</td>
-<td>企业新区块链地址</td>
-<td>address</td>
+<td>amount</td>
+<td>销毁的数量</td>
+<td>uint256</td>
 </tr>
 </tbody>
 </table></div>
 <div class="section" id="id10">
-<h3>删除某个商户<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-<p>方法名： deleteStore</p>
+<h3>转账卡劵余额<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>方法名：couponTransfer</p>
 <table border="1" class="docutils">
 <thead>
 <tr>
@@ -413,15 +365,40 @@
 </thead>
 <tbody>
 <tr>
-<td>_storeId</td>
-<td>需要删除的商户的Id</td>
+<td>recipient</td>
+<td>收款方地址-</td>
+<td>Address</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>转账数量</td>
+<td>uint256</td>
+</tr>
+<tr>
+<td>_orderId</td>
+<td>订单编号</td>
+<td>string</td>
+</tr>
+<tr>
+<td>_orderDetailId</td>
+<td>订单详情编号</td>
+<td>string</td>
+</tr>
+<tr>
+<td>_orderContent</td>
+<td>订单内容</td>
+<td>string</td>
+</tr>
+<tr>
+<td>_orderDetailContent</td>
+<td>订单详情内容</td>
 <td>string</td>
 </tr>
 </tbody>
 </table></div>
 <div class="section" id="id11">
-<h3>删除某个企业<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<p>方法名： deleteEnterprise</p>
+<h3>退款<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>方法名：couponRefund</p>
 <table border="1" class="docutils">
 <thead>
 <tr>
@@ -432,46 +409,33 @@
 </thead>
 <tbody>
 <tr>
-<td>_enterpriseId</td>
-<td>需要删除的企业的Id</td>
+<td>recipient</td>
+<td>收款方地址-</td>
+<td>Address</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>转账数量</td>
+<td>uint256</td>
+</tr>
+<tr>
+<td>_orderId</td>
+<td>订单编号</td>
 <td>string</td>
 </tr>
-</tbody>
-</table></div>
-<div class="section" id="id12">
-<h3>设置平台费用地址<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
-<p>方法名：setFeeAddress</p>
-<table border="1" class="docutils">
-<thead>
 <tr>
-<th>输入参数</th>
-<th>参数含义</th>
-<th>类型</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>_newFeeAddress</td>
-<td>新的feeAddress</td>
+<td>_orderDetailId</td>
+<td>订单详情编号</td>
 <td>string</td>
 </tr>
-</tbody>
-</table></div>
-<div class="section" id="id13">
-<h3>设置管理员地址<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
-<p>方法名：setAdmin</p>
-<table border="1" class="docutils">
-<thead>
 <tr>
-<th>输入参数</th>
-<th>参数含义</th>
-<th>类型</th>
+<td>_orderContent</td>
+<td>订单内容</td>
+<td>string</td>
 </tr>
-</thead>
-<tbody>
 <tr>
-<td>_newAdmin</td>
-<td>新的管理员地址</td>
+<td>_orderDetailContent</td>
+<td>订单详情内容</td>
 <td>string</td>
 </tr>
 </tbody>
@@ -487,10 +451,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="JJToken.html" class="btn btn-neutral float-right" title="JJToken.sol" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../JJ-Bridge/index.html" class="btn btn-neutral float-right" title="区块链中间件" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="config.html" class="btn btn-neutral float-left" title="Config.sol" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="JJToken.html" class="btn btn-neutral float-left" title="JJToken.sol" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

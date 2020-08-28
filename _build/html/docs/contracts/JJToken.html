@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>合约项目 &mdash; JJToken 1.0 documentation</title>
+  <title>JJToken.sol &mdash; JJToken 1.0 documentation</title>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="合约总览" href="contracts.html" />
-    <link rel="prev" title="系统设计" href="../general/systemDesign.html" /> 
+    <link rel="next" title="Coupons.sol" href="coupons.html" />
+    <link rel="prev" title="Roles.sol" href="roles.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -86,12 +86,23 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction.html">基本介绍和项目目的</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../flowcharts/index.html">流程图</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../general/index.html">系统设计</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">合约项目</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">合约项目</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="contracts.html">合约总览</a></li>
 <li class="toctree-l2"><a class="reference internal" href="contracts.html#id2">快速开始</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config.html">Config.sol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="roles.html">Roles.sol</a></li>
-<li class="toctree-l2"><a class="reference internal" href="JJToken.html">JJToken.sol</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">JJToken.sol</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">合约作用</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">合约方法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#jjtoken">查询JJToken的余额</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">给企业发行JJToken</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">销毁一定数量的JJToken</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">授权给合约使用自己的JJToken</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">转账JJToken（主要用户企业向商家购买卡券）</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="coupons.html">Coupons.sol</a></li>
 </ul>
 </li>
@@ -141,13 +152,15 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-      <li>合约项目</li>
+          <li><a href="index.html">合约项目</a> &raquo;</li>
+        
+      <li>JJToken.sol</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../../_sources/docs/contracts/index.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../../_sources/docs/contracts/JJToken.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -160,19 +173,129 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="id1">
-<h1>合约项目<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>整个项目中所有关于合约的部分将会展示在这里
-您将会看到：合约的总览，合约预部署的地址，还有各个合约的方法详情</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="contracts.html">合约总览</a></li>
-<li class="toctree-l1"><a class="reference internal" href="contracts.html#id2">快速开始</a></li>
-<li class="toctree-l1"><a class="reference internal" href="config.html">Config.sol</a></li>
-<li class="toctree-l1"><a class="reference internal" href="roles.html">Roles.sol</a></li>
-<li class="toctree-l1"><a class="reference internal" href="JJToken.html">JJToken.sol</a></li>
-<li class="toctree-l1"><a class="reference internal" href="coupons.html">Coupons.sol</a></li>
-</ul>
+  <div class="section" id="jjtoken-sol">
+<h1>JJToken.sol<a class="headerlink" href="#jjtoken-sol" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>合约作用<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>这是通用Token的主合约，通用Token是在整个系统流转的稳定Token，同时，也可以实现和法币之间的自由兑换。</p>
+</div>
+<div class="section" id="id2">
+<h2>合约方法<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="jjtoken">
+<h3>查询JJToken的余额<a class="headerlink" href="#jjtoken" title="Permalink to this headline">¶</a></h3>
+<p>方法名： jjBalance</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入参数</th>
+<th>参数含义</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>userAddress</td>
+<td>需要查询的地址</td>
+<td>address</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id3">
+<h3>给企业发行JJToken<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>方法名： jjMint</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入参数</th>
+<th>参数含义</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>enterprise</td>
+<td>企业区块链地址</td>
+<td>string</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>需要发行的JJToken数量</td>
+<td>uint256</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id4">
+<h3>销毁一定数量的JJToken<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>方法名：jjBurn</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入参数</th>
+<th>参数含义</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>account</td>
+<td>需要销毁的地址</td>
+<td>address</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>需要销毁的数量</td>
+<td>uint256</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id5">
+<h3>授权给合约使用自己的JJToken<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>方法名：jjApproveTo</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入参数</th>
+<th>参数含义</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>tokenAddress</td>
+<td>合约地址</td>
+<td>address</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>授权数量</td>
+<td>uint256</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id6">
+<h3>转账JJToken（主要用户企业向商家购买卡券）<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>方法名： jjTransfer</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入参数</th>
+<th>参数含义</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>recipient</td>
+<td>接受人-</td>
+<td>address</td>
+</tr>
+<tr>
+<td>amount</td>
+<td>数量</td>
+<td>Uint256</td>
+</tr>
+</tbody>
+</table></div>
 </div>
 </div>
 
@@ -184,10 +307,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="contracts.html" class="btn btn-neutral float-right" title="合约总览" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="coupons.html" class="btn btn-neutral float-right" title="Coupons.sol" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../general/systemDesign.html" class="btn btn-neutral float-left" title="系统设计" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="roles.html" class="btn btn-neutral float-left" title="Roles.sol" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

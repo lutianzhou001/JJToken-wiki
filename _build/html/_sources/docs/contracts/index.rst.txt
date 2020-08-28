@@ -12,7 +12,7 @@
    config.md
    roles.md
    acl.md
-   jjtoken.md
+   JJToken.md
    coupons.md
 
 
