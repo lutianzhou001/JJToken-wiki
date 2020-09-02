@@ -102,9 +102,10 @@
 <li class="toctree-l4"><a class="reference internal" href="#id6">提现</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id7">发行卡劵</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#id8">批量发行卡劵</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">销毁卡劵</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">转账卡劵余额</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">退款</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">销毁自有卡劵</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">销毁卡劵</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">转账卡劵余额</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">退款</a></li>
 </ul>
 </li>
 </ul>
@@ -330,7 +331,8 @@
 </tbody>
 </table></div>
 <div class="section" id="id9">
-<h3>销毁卡劵<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3>销毁自有卡劵<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>方法名：burnMyself</p>
 <table border="1" class="docutils">
 <thead>
 <tr>
@@ -341,11 +343,6 @@
 </thead>
 <tbody>
 <tr>
-<td>account</td>
-<td>销毁地址-</td>
-<td>address[]</td>
-</tr>
-<tr>
 <td>amount</td>
 <td>销毁的数量</td>
 <td>uint256</td>
@@ -353,7 +350,31 @@
 </tbody>
 </table></div>
 <div class="section" id="id10">
-<h3>转账卡劵余额<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<h3>销毁卡劵<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<p>方法名：burn</p>
+<table border="1" class="docutils">
+<thead>
+<tr>
+<th>输入参数</th>
+<th>参数含义</th>
+<th>类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>amount</td>
+<td>销毁的数量</td>
+<td>uint256</td>
+</tr>
+<tr>
+<td>account</td>
+<td>销毁地址</td>
+<td>address</td>
+</tr>
+</tbody>
+</table></div>
+<div class="section" id="id11">
+<h3>转账卡劵余额<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
 <p>方法名：couponTransfer</p>
 <table border="1" class="docutils">
 <thead>
@@ -396,8 +417,8 @@
 </tr>
 </tbody>
 </table></div>
-<div class="section" id="id11">
-<h3>退款<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id12">
+<h3>退款<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <p>方法名：couponRefund</p>
 <table border="1" class="docutils">
 <thead>
